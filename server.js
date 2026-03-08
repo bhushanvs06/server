@@ -22,7 +22,9 @@ const rolesByType = {
 const app = express();
 // app.use(cors());
 app.use(cors({
-  origin: 'https://main.d395dqck1v36zk.amplifyapp.com'  // Your Amplify URL
+  origin: 'https://main.d395dqck1v36zk.amplifyapp.com', // Your Amplify URL
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 app.use(express.json());
 app.use(bodyParser.json());
@@ -2004,4 +2006,5 @@ app.post('/api/save-transcripts', async (req, res) => {
 // 🚀 Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT} (DynamoDB - Users table only)`));
+
 
